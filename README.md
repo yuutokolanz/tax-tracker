@@ -1,6 +1,6 @@
-## Problem Track
+## Tax Tracker
 
-"Problem Track" is the ultimate solution for organizations seeking to enhance their problem resolution processes, drive operational efficiency, and deliver exceptional customer experiences.
+"Tax Tracker" is an solution for .
 
 ### Dependências
 
@@ -12,8 +12,8 @@
 #### Clone Repository
 
 ```
-$ git clone git@github.com:SI-DABE/problem-track.git
-$ cd problem-track
+$ git clone git@github.com:yuutokolanz/tax-tracker.git
+$ cd tax-tracker
 ```
 
 #### Define the env variables
