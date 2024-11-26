@@ -49,6 +49,14 @@ class Database
     public static function migrate(): void
     {
         $sql = file_get_contents(Constants::databasePath()->join('schema.sql'));
-        self::getDatabaseConn()->exec($sql);
+        $queries = explode(';', $sql);
+
+        $db = self::getDatabaseConn();
+        foreach ($queries as $query) {
+            $trimmedQuery = trim($query);
+            if (!empty($trimmedQuery)) {
+                $db->exec($trimmedQuery . ';');
+            }
+        }
     }
 }

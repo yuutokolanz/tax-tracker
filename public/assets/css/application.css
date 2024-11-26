@@ -1,10 +1,6 @@
-body {
-  margin-top: 60px;
-}
-
 #main-content {
   padding-top: 5px;
-  margin-left: 250px;
+  margin-left: 80px;
 }
 
 nav.navbar {
@@ -13,7 +9,7 @@ nav.navbar {
 }
 
 .sidebar {
-  width: 250px;
+  width: 80px;
   position: fixed;
   top: 55px;
   bottom: 0;
@@ -23,7 +19,10 @@ nav.navbar {
   border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.avatar {
-  width: 315px;
-  height: 315px;
+.nav-link i {
+  font-size: 1.2rem;
+}
+
+.nav-link:hover {
+  background-color: #3596fd;
 }

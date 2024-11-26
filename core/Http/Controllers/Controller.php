@@ -2,6 +2,7 @@
 
 namespace Core\Http\Controllers;
 
+use App\Models\Accountants;
 use App\Models\User;
 use Core\Constants\Constants;
 use Lib\Authentication\Auth;
@@ -10,21 +11,21 @@ class Controller
 {
     protected string $layout = 'application';
 
-    // protected ?User $current_user = null;
+    protected ?Accountants $current_user = null;
 
-    // public function __construct()
-    // {
-    //     $this->current_user = Auth::user();
-    // }
+    public function __construct()
+    {
+        $this->current_user = Auth::user();
+    }
 
-    // public function currentUser(): ?User
-    // {
-    //     if ($this->current_user === null) {
-    //         $this->current_user = Auth::user();
-    //     }
+    public function currentUser(): ?Accountants
+    {
+        if ($this->current_user === null) {
+            $this->current_user = Auth::user();
+        }
 
-    //     return $this->current_user;
-    // }
+        return $this->current_user;
+    }
 
     /**
      * @param array<string, mixed> $data
