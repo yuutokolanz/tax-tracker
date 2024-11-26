@@ -8,7 +8,8 @@ use Core\Http\Middleware\Middleware;
 class RouteWrapperMiddleware
 {
     public function __construct(
-        private string $name
+        private string $name,
+        private ?int $requiredRoleLevel = null
     ) {
     }
 
@@ -27,6 +28,9 @@ class RouteWrapperMiddleware
     private function middlewareInstance(): Middleware
     {
         $class = App::$middlewareAliases[$this->name];
+        if ($this->requiredRoleLevel !== null && method_exists($class, 'withRoleLevel')) {
+            return $class::withRoleLevel($this->requiredRoleLevel);
+        }
         return new $class();
     }
 }

@@ -12,14 +12,19 @@ DROP TABLE IF EXISTS roles;
 
 CREATE TABLE roles (
     id INT PRIMARY KEY,
-    role_name VARCHAR(50)
+    role_name VARCHAR(50),
+    CONSTRAINT unique_role_name UNIQUE (role_name)
 );
 
+INSERT INTO roles (id, role_name) VALUES (1, 'accountant');
+INSERT INTO roles (id, role_name) VALUES (2, 'supervisor');
+INSERT INTO roles (id, role_name) VALUES (3, 'admin');
+
 CREATE TABLE accountants (
-    id INT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100),
     email VARCHAR(100) UNIQUE,
-    password VARCHAR(255),
+    encrypted_password VARCHAR(255),
     created_at DATE,
     supervisor_id INT,
     role_id INT,
