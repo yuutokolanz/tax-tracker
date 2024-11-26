@@ -4,8 +4,8 @@ namespace Tests\Browser\Accountants;
 
 use PHPUnit\Framework\TestCase as FrameworkTestCase;
 
-class AuthenticatedTest extends FrameworkTestCase{
-    
+class AuthenticatedTest extends FrameworkTestCase
+{
     public function test_should_redirect_if_not_authenticated_to_index(): void
     {
         $page = file_get_contents('http://web/');
