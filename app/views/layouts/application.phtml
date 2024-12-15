@@ -61,6 +61,11 @@
                                     <i class="bi-archive fs-1"></i>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="<?= route('clients.index') ?>" class="nav-link py-2 px-1" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Clientes">
+                                    <i class="bi-person-vcard fs-1"></i>
+                                </a>
+                            </li>
                             <?php if ($this->current_user->role_id > 1): ?>
                                 <li class="nav-item">
                                     <a href="<?= route('declarations.all') ?>" class="nav-link py-2 px-1" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Todas as Declarações que Supervisiono">

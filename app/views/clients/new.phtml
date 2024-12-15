@@ -1,0 +1,17 @@
+<form action="<?= route('clients.create') ?>" method="POST" class="<?= $client->hasErrors() ? '' : 'was-validated' ?>" novalidate>
+  <div class="mb-3">
+    <label for="client_name" class="form-label">Nome:</label>
+    <input type="text" name="client[name]" class="form-control" id="client_name" required>
+    <div class="invalid-feedback"><?= $client->errors('name') ? $client->errors('name') : '' ?></div>
+
+    <label for="client_cpf" class="form-label">CPF:</label>
+    <input type="text" name="client[cpf]" class="form-control" id="client_cpf" maxlength="14" required>
+    <div class="invalid-feedback"><?= $client->errors('cpf') ? $client->errors('cpf') : '' ?></div>
+
+    <label for="client_email" class="form-label">Email:</label>
+    <input type="email" name="client[email]" class="form-control" id="client_email"required>
+    <div class="invalid-feedback"><?= $client->errors('email') ? $client->errors('email') : '' ?></div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Registrar Cliente</button>
+</form>

@@ -26,3 +26,7 @@ nav.navbar {
 .nav-link:hover {
   background-color: #3596fd;
 }
+
+.link-button:hover {
+  background-color: #000;
+}

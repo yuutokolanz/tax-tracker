@@ -42,11 +42,6 @@ class Accountants extends Model
         return password_verify($password, $this->encrypted_password);
     }
 
-    public static function findByEmail(string $email): Accountants | null
-    {
-        return Accountants::findBy(['email' => $email]);
-    }
-
     public function __set(string $property, mixed $value): void
     {
         parent::__set($property, $value);
