@@ -1,0 +1,12 @@
+<div class="d-flex row justify-content-center align-items-center h-100">
+  <div class="mb-3 col-8 link-text">
+    <a href="<?= route('clients.index') ?>"><i class="bi bi-chevron-left"></i></a>
+  </div>
+  <div class="card col-8">
+    <div class="card-body">
+      <h4> <?= $client->name ?></h4>
+      <p> <?= $client->email ?></p>
+      <p> <?= $client->cpf ?></p>
+    </div>
+  </div>
+</div>

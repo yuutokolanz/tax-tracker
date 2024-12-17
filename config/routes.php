@@ -30,6 +30,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/clients/new', [ClientsController::class, 'new'])->name('clients.new');
     Route::post('/clients', [ClientsController::class, 'create'])->name('clients.create');
 
+        //Retrive
+    Route::get('/clients/{id}', [ClientsController::class, 'show'])->name('clients.show');
+
+        //Update
+    Route::get('/clients/{id}/edit', [ClientsController::class, 'edit'])->name('clients.edit');
+    Route::put('/clients/{id}', [ClientsController::class, 'update'])->name('clients.update');
+
+        //Delete
+
     // Supervisor Routes
     $supervisorMiddleware = new RouteWrapperMiddleware('role_supervisor', 2);
     $supervisorMiddleware->group(function () {

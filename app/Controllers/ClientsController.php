@@ -38,4 +38,49 @@ class ClientsController extends Controller
       $this->render('clients/new', compact('client', 'title'));
     }
   }
+  public function show(Request $request): void
+  {
+    $client = Clients::findById($request->getParam('id'));
+
+    if ($client) {
+      $title = "Detalhes do cliente {$client->name}";
+      $this->render('clients/show', compact('client', 'title'));
+    } else {
+      FlashMessage::danger('Cliente não encontrado!');
+      $this->redirectTo(route('clients.index'));
+    }
+  }
+
+  public function edit(Request $request): void
+  {
+    $client = Clients::findById($request->getParam('id'));
+
+    if ($client) {
+      $title = "Editar cliente {$client->name}";
+      $this->render('clients/edit', compact('client', 'title'));
+    } else {
+      FlashMessage::danger('Cliente não encontrado!');
+      $this->redirectTo(route('clients.index'));
+    }
+  }
+
+  public function update(Request $request): void
+  {
+    $params = $request->getParams();
+    $client = Clients::findById($request->getParam('id'));
+
+    if ($client) {
+      if ($client->update($params['client'])) {
+        FlashMessage::success('Cliente atualizado com sucesso!');
+        $this->redirectTo(route('clients.index'));
+      } else {
+        FlashMessage::danger('Erro ao atualizar cliente!');
+        $title = "Editar cliente {$client->name}";
+        $this->render('clients/edit', compact('client', 'title'));
+      }
+    } else {
+      FlashMessage::danger('Cliente não encontrado!');
+      $this->redirectTo(route('clients.index'));
+    }
+  }
 }

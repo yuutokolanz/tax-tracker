@@ -1,3 +1,6 @@
+<div class="mb-3 col-8 link-text">
+    <a href="<?= route('clients.index') ?>"><i class="bi bi-chevron-left"></i></a>
+</div>
 <form action="<?= route('clients.create') ?>" method="POST" class="<?= $client->hasErrors() ? '' : 'was-validated' ?>" novalidate>
   <div class="mb-3">
     <label for="client_name" class="form-label">Nome:</label>
