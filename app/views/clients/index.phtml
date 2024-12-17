@@ -29,7 +29,7 @@
         <td><?= $client->email ?></td>
         <td>
             <div class="d-flex flex-row-reverse">
-                <form action="" method="POST" class="m-0">
+                <form action="<?= route('clients.destroy', ['id' => $client->id]) ?>" method="POST" class="m-0">
                     <input type="hidden" name="_method" value="DELETE">
                     <button type="submit" class="btn btn-link"><i class="bi bi-trash3"></i></button>
                 </form>

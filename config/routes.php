@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/clients/{id}', [ClientsController::class, 'update'])->name('clients.update');
 
         //Delete
+    Route::delete('/clients/{id}', [ClientsController::class, 'destroy'])->name('clients.destroy');
 
     // Supervisor Routes
     $supervisorMiddleware = new RouteWrapperMiddleware('role_supervisor', 2);

@@ -83,4 +83,14 @@ class ClientsController extends Controller
       $this->redirectTo(route('clients.index'));
     }
   }
+
+  public function destroy(Request $request) : void {
+    $params = $request->getParams();
+
+    $client = Clients::findById($params['id']);
+    $client->destroy();
+
+    FlashMessage::success('Cliente excluído com sucesso!');
+    $this->redirectTo(route('clients.index'));
+  }
 }
