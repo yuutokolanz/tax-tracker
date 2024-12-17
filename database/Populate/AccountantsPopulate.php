@@ -3,8 +3,6 @@
 namespace Database\Populate;
 
 use App\Models\Accountants;
-use PDO;
-use PDOException;
 
 class AccountantsPopulate
 {
