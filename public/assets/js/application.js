@@ -5,6 +5,35 @@ document.addEventListener('DOMContentLoaded', function () {
   })
 });
 
+function maskCPF(input) {
+  let value = input.value;
+  value = value.replace(/\D/g, "");
+  value = value.replace(/(\d{3})(\d)/, "$1.$2");
+  value = value.replace(/(\d{3})(\d)/, "$1.$2");
+  value = value.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+  input.value = value;
+}
+
+function unmaskCPF(input) {
+  input.value = input.value.replace(/\D/g, "");
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  const cpfInput = document.getElementById('client_cpf');
+  if (cpfInput) {
+    cpfInput.addEventListener('input', function () {
+      maskCPF(cpfInput);
+    });
+  }
+
+  const form = document.querySelector('form');
+  if (form) {
+    form.addEventListener('submit', function () {
+      unmaskCPF(cpfInput);
+    });
+  }
+});
+
 // document.addEventListener("DOMContentLoaded", function () {
 //   const imagePreviewInput = document.getElementById("image_preview_input");
 //   const preview = document.getElementById("image_preview");

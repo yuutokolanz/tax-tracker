@@ -33,7 +33,7 @@ CREATE TABLE accountants (
 );
 
 CREATE TABLE clients (
-    id INT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100),
     cpf CHAR(11),
     email VARCHAR(100),

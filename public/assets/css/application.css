@@ -26,3 +26,27 @@ nav.navbar {
 .nav-link:hover {
   background-color: #3596fd;
 }
+
+.link-button:hover {
+  background-color: #000;
+}
+
+.link-text a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0d6efd;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 1rem;
+}

@@ -26,6 +26,18 @@ class Validations
         return true;
     }
 
+    public static function correctLength($attribute, $obj, $min, $max)
+    {
+        $length = strlen($obj->$attribute);
+
+        if ($length < $min || $length > $max) {
+            $obj->addError($attribute, "deve ter entre {$min} e {$max} caracteres!");
+            return false;
+        }
+
+        return true;
+    }
+
     public static function uniqueness($fields, $object)
     {
         if (!is_array($fields)) {

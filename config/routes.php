@@ -2,6 +2,7 @@
 
 use App\Controllers\AccountantsController;
 use App\Controllers\AuthenticationsController;
+use App\Controllers\ClientsController;
 use App\Controllers\DeclarationsController;
 use App\Controllers\HomeController;
 use Core\Router\Route;
@@ -22,6 +23,23 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/declarations/show/{id}', [DeclarationsController::class, 'show'])->name('declarations.show');
 
+    // Clients Crud
+    Route::get('/clients', [ClientsController::class, 'index'])->name('clients.index');
+
+        //Create
+    Route::get('/clients/new', [ClientsController::class, 'new'])->name('clients.new');
+    Route::post('/clients', [ClientsController::class, 'create'])->name('clients.create');
+
+        //Retrive
+    Route::get('/clients/{id}', [ClientsController::class, 'show'])->name('clients.show');
+
+        //Update
+    Route::get('/clients/{id}/edit', [ClientsController::class, 'edit'])->name('clients.edit');
+    Route::put('/clients/{id}', [ClientsController::class, 'update'])->name('clients.update');
+
+        //Delete
+    Route::delete('/clients/{id}', [ClientsController::class, 'destroy'])->name('clients.destroy');
+
     // Supervisor Routes
     $supervisorMiddleware = new RouteWrapperMiddleware('role_supervisor', 2);
     $supervisorMiddleware->group(function () {
@@ -29,6 +47,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/accountants/all', [AccountantsController::class, 'all'])->name('accountants.all');
     });
 
+    // Admin Routes
     $adminMiddleware = new RouteWrapperMiddleware('role_admin', 3);
     $adminMiddleware->group(function () {
         Route::get('/accountants/new', [AccountantsController::class, 'new'])->name('accountants.new');

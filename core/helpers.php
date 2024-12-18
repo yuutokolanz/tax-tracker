@@ -21,3 +21,10 @@ if (!function_exists('route')) {
         return Router::getInstance()->getRoutePathByName($name, $params);
     }
 }
+
+if (!function_exists('maskCPF')) {
+    function maskCPF(string $cpf): string
+    {
+        return substr($cpf, 0, 3) . '.' . substr($cpf, 3, 3) . '.' . substr($cpf, 6, 3) . '-' . substr($cpf, 9, 2);
+    }
+}
