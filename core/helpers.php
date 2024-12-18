@@ -23,7 +23,8 @@ if (!function_exists('route')) {
 }
 
 if (!function_exists('maskCPF')) {
-    function maskCPF(string $cpf) : string {
+    function maskCPF(string $cpf): string
+    {
         return substr($cpf, 0, 3) . '.' . substr($cpf, 3, 3) . '.' . substr($cpf, 6, 3) . '-' . substr($cpf, 9, 2);
     }
 }
