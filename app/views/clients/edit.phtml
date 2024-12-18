@@ -1,22 +1,43 @@
-<div class="mb-3 col-8 link-text">
-    <a href="<?= route('clients.index') ?>"><i class="bi bi-chevron-left"></i></a>
-</div>
-<form action="<?= route('clients.update', ['id' => $client->id]) ?>" method="POST" class="<?= $client->hasErrors() ? '' : 'was-validated' ?>" novalidate>
-  <div class="mb-3">
-    <input type="hidden" name="_method" value="PUT">
-
-    <label for="client_name" class="form-label">Nome:</label>
-    <input type="text" name="client[name]" class="form-control" id="client_name" value="<?= $client->name ?>" required>
-    <div class="invalid-feedback"><?= $client->errors('name') ? $client->errors('name') : '' ?></div>
-
-    <label for="client_cpf" class="form-label">CPF:</label>
-    <input type="text" name="client[cpf]" class="form-control" id="client_cpf" maxlength="14" value="<?= $client->cpf ?>" required>
-    <div class="invalid-feedback"><?= $client->errors('cpf') ? $client->errors('cpf') : '' ?></div>
-    
-    <label for="client_email" class="form-label">Email:</label>
-    <input type="email" name="client[email]" class="form-control" id="client_email" value="<?= $client->email ?>" required>
-    <div class="invalid-feedback"><?= $client->errors('email') ? $client->errors('email') : '' ?></div>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12 mb-3">
+      <a href="<?= route('clients.index') ?>" class="btn btn-secondary">
+        <i class="bi bi-chevron-left"></i> Voltar
+      </a>
+    </div>
   </div>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h4>Editar Cliente</h4>
+        </div>
+        <div class="card-body">
+          <form action="<?= route('clients.update', ['id' => $client->id]) ?>" method="POST" class="<?= $client->hasErrors() ? '' : 'was-validated' ?>" novalidate>
+            <input type="hidden" name="_method" value="PUT">
+            
+            <div class="mb-3">
+              <label for="client_name" class="form-label">Nome:</label>
+              <input type="text" name="client[name]" class="form-control" id="client_name" value="<?= $client->name ?>" required>
+              <div class="invalid-feedback"><?= $client->errors('name') ? $client->errors('name') : '' ?></div>
+            </div>
 
-  <button type="submit" class="btn btn-primary">Atualizar Cliente</button>
-</form>
+            <div class="mb-3">
+              <label for="client_cpf" class="form-label">CPF:</label>
+              <input type="text" name="client[cpf]" class="form-control" id="client_cpf" maxlength="14" value="<?= $client->cpf ?>" required>
+              <div class="invalid-feedback"><?= $client->errors('cpf') ? $client->errors('cpf') : '' ?></div>
+            </div>
+
+            <div class="mb-3">
+              <label for="client_email" class="form-label">Email:</label>
+              <input type="email" name="client[email]" class="form-control" id="client_email" value="<?= $client->email ?>" required>
+              <div class="invalid-feedback"><?= $client->errors('email') ? $client->errors('email') : '' ?></div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Atualizar Cliente</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
