@@ -70,9 +70,14 @@ class ClientsController extends Controller
         $client = Clients::findById($request->getParam('id'));
 
         if ($client) {
-            if ($client->update($params['client'])) {
-                FlashMessage::success('Cliente atualizado com sucesso!');
-                $this->redirectTo(route('clients.index'));
+            $client->__set('name', $params['client']['name']);
+            $client->__set('cpf', $params['client']['cpf']);
+            $client->__set('email', $params['client']['email']);
+
+            if ($client->isValidToUpdate()) {
+                    $client->update($params['client']);
+                    FlashMessage::success('Cliente atualizado com sucesso!');
+                    $this->redirectTo(route('clients.index'));
             } else {
                 FlashMessage::danger('Erro ao atualizar cliente!');
                 $title = "Editar cliente {$client->name}";

@@ -25,6 +25,28 @@ class Clients extends Model
         Validations::correctLength('cpf', $this, 11, 11);
     }
 
+    public function validateUpdate(): void
+    {
+        Validations::notEmpty('name', $this);
+        Validations::notEmpty('email', $this);
+        Validations::notEmpty('cpf', $this);
+        Validations::correctLength('cpf', $this, 11, 11);
+
+        $existingClient = Clients::findByCpf($this->cpf);
+        if ($existingClient && $existingClient->id !== $this->id) {
+            Validations::uniqueness('cpf', $this);
+        }
+    }
+
+    public function isValidToUpdate(): bool
+    {
+        $this->errors = [];
+
+        $this->validateUpdate();
+
+        return empty($this->errors);
+    }
+
     public static function findByCpf(string $cpf): Clients | null
     {
         return Clients::findBy(['cpf' => $cpf]);
