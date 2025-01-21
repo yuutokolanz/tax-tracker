@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Core\Database\ActiveRecord\HasMany;
 use Core\Database\ActiveRecord\Model;
 use Lib\Validations;
 
@@ -15,6 +16,11 @@ class Clients extends Model
 {
     protected static string $table = 'clients';
     protected static array $columns = ['id', 'name', 'cpf', 'email'];
+
+    public function declarations(): HasMany
+    {
+        return $this->hasMany(Declarations::class, 'client_id');
+    }
 
     public function validates(): void
     {
@@ -34,7 +40,7 @@ class Clients extends Model
 
         $existingClient = Clients::findByCpf($this->cpf);
         if ($existingClient && $existingClient->id !== $this->id) {
-            Validations::uniqueness('cpf', $this);
+            $this->errors('cpf', 'já existe um registro com esse dado');
         }
     }
 

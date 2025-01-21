@@ -41,7 +41,7 @@ CREATE TABLE clients (
 );
 
 CREATE TABLE declarations (
-    id INT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     client_id INT,
     year INT,
     status VARCHAR(50),

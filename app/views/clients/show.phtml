@@ -13,4 +13,29 @@
       <p class="card-text"><?= $client->cpf ?></p>
     </div>
   </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Id do cliente</th>
+        <th>Ano</th>
+        <th>Status</th>
+        <th>A pagar</th>
+        <th>Retorno</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($declarations as $declaration) : ?>
+        <tr>
+          <td><a href=""><?= $declaration->id ?></a></td>
+          <td><?= $declaration->client_id ?></td>
+          <td><?= $declaration->year ?></td>
+          <td><?= $declaration->status ?></td>
+          <td><?= $declaration->tax_due ?></td>
+          <td><?= $declaration->tax_return ?></td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+  <!-- Fazer paginator footer para as declarações -->
 </div>
