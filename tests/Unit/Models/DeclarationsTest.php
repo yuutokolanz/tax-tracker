@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Models\Declarations;
+namespace Tests\Unit\Models;
 
 use App\Models\Clients;
 use App\Models\Declarations;
