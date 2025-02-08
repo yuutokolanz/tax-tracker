@@ -1,0 +1,24 @@
+<div class="container mt-5">
+    <form action="<?= route('declarations.create') ?>" method="POST" class="d-flex flex-column form-background" novalidate>
+        <div class="row mb-3 mx-5">
+            <label for="client-selector">Selecione o cliente</label>
+            <select name="client_id" id="client-selector" class="form-select">
+                <option disabled selected >Selecione</option>
+                <?php foreach ($clients as $client): ?>
+                    <option value="<?php echo $client->id; ?>"><?php echo $client->name; ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <div class="row mb-3 mx-5">
+            <label for="client-selector">Selecione o ano da declaração</label>
+            <select name="declaration[year]" id="ano-declaracao" class="form-select">
+                <option disabled selected >Selecione</option>
+                <?php for ($i = 2015; $i <= date('Y'); $i++): ?>
+                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                <?php endfor; ?>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary align-self-center ">Iniciar declaração</button>
+    </form>
+</div>

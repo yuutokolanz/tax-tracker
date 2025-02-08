@@ -42,9 +42,12 @@ class ClientsController extends Controller
     {
         $client = Clients::findById($request->getParam('id'));
 
+        $paginator = $client->declarations()->paginate(page: $request->getParam('page', 1));
+        $declarations = $paginator->registers();
+
         if ($client) {
             $title = "Detalhes do cliente {$client->name}";
-            $this->render('clients/show', compact('client', 'title'));
+            $this->render('clients/show', compact('client', 'title', 'paginator', 'declarations'));
         } else {
             FlashMessage::danger('Cliente não encontrado!');
             $this->redirectTo(route('clients.index'));

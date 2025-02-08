@@ -8,7 +8,7 @@ class ClientsPopulate
 {
   public static function populate(): void
   {
-    $numberOfClients = 20;
+    $numberOfClients = 10;
 
     for ($i = 0; $i < $numberOfClients; $i++) {
       $data = [

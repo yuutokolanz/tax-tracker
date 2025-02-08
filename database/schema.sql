@@ -41,7 +41,7 @@ CREATE TABLE clients (
 );
 
 CREATE TABLE declarations (
-    id INT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     client_id INT,
     year INT,
     status VARCHAR(50),
@@ -49,7 +49,7 @@ CREATE TABLE declarations (
     tax_return FLOAT,
     created_at DATE,
     updated_at DATE,
-    FOREIGN KEY (client_id) REFERENCES clients (id)
+    FOREIGN KEY (client_id) REFERENCES clients (id) ON DELETE CASCADE
 );
 
 CREATE TABLE documents (
@@ -58,7 +58,7 @@ CREATE TABLE documents (
     document_type VARCHAR(50),
     file_path VARCHAR(255),
     uploaded_at DATE,
-    FOREIGN KEY (declaration_id) REFERENCES declarations (id)
+    FOREIGN KEY (declaration_id) REFERENCES declarations (id) ON DELETE CASCADE
 );
 
 CREATE TABLE categories (
@@ -73,7 +73,7 @@ CREATE TABLE expenses (
     amount FLOAT,
     date DATE,
     category_id INT,
-    FOREIGN KEY (declaration_id) REFERENCES declarations (id),
+    FOREIGN KEY (declaration_id) REFERENCES declarations (id) ON DELETE CASCADE,
     FOREIGN KEY (category_id) REFERENCES categories (id)
 );
 

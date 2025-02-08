@@ -16,7 +16,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/logout', [AuthenticationsController::class, 'logout'])->name('accountants.logout');
     Route::get('/', [HomeController::class, 'index'])->name('index');
 
-    Route::get('/declarations/new', [DeclarationsController::class, 'new'])->name('declarations.new');
+    // Declarations
+        //Crud
+        Route::get('/declarations/new', [DeclarationsController::class, 'new'])->name('declarations.new');
+        Route::post('/declarations', [DeclarationsController::class, 'create'])->name('declarations.create');
+
+        Route::delete('/declarations/{id}', [DeclarationsController::class, 'destroy'])->name('declarations.destroy');
+
     Route::get('/declarations/pending', [DeclarationsController::class, 'pending'])->name('declarations.pending');
     Route::get('/declarations/finished', [DeclarationsController::class, 'finished'])->name('declarations.finished');
     Route::get('/declarations/my', [DeclarationsController::class, 'my'])->name('declarations.my');

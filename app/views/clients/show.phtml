@@ -10,7 +10,41 @@
     <div class="card-body">
       <h4 class="card-title"><?= $client->name ?></h4>
       <p class="card-text"><?= $client->email ?></p>
-      <p class="card-text"><?= $client->cpf ?></p>
+      <p class="card-text"><?= maskCPF($client->cpf) ?></p>
     </div>
   </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Cliente</th>
+        <th>Ano</th>
+        <th>Status</th>
+        <th>A pagar</th>
+        <th>Retorno</th>
+        <th>Excluir</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($declarations as $declaration) : ?>
+        <tr>
+          <td><a href=""><?= $declaration->id ?></a></td>
+          <td><?= $client->name ?></td>
+          <td><?= $declaration->year ?></td>
+          <td><?= $declaration->status ?></td>
+          <td><?= $declaration->tax_due ?></td>
+          <td><?= $declaration->tax_return ?></td>
+          <td>
+            <div class="d-flex flex-row-reverse justify-content-end">
+                <form action="<?= route('declarations.destroy', ['id' => $declaration->id]) ?>" method="POST" class="m-0">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-link text-danger"><i class="bi bi-trash3"></i></button>
+                </form>
+            </div>
+          </td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+  <!-- Fazer paginator footer para as declarações -->
 </div>
