@@ -26,11 +26,14 @@ class DeclarationsController extends Controller
         } elseif (!isset($params['declaration'])) {
             FlashMessage::danger('Por favor preencha os campos corretamente!');
             $this->redirectTo(route('declarations.new'));
+        } elseif (Clients::findById($params['client_id']) === null) {
+            FlashMessage::danger('Cliente não encontrado!');
+            $this->redirectTo(route('declarations.new'));
         }
 
         $client = Clients::findById($params['client_id']);
         $declaration = $client->declarations()->new($params['declaration']);
-        $declaration->status = "Iniciado e aguardando documentação";
+        $declaration->__set('status', 'Iniciado e aguardando documentação');
         if ($declaration->save()) {
             FlashMessage::success('Declaração cadastrada com sucesso!');
             $this->redirectTo(route('declarations.my'));
