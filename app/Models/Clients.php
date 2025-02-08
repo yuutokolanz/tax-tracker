@@ -40,7 +40,7 @@ class Clients extends Model
 
         $existingClient = Clients::findByCpf($this->cpf);
         if ($existingClient && $existingClient->id !== $this->id) {
-            $this->errors('cpf', 'já existe um registro com esse dado');
+            $this->addError('cpf', 'já existe um registro com esse dado');
         }
     }
 

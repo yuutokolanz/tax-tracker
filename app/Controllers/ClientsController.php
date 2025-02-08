@@ -47,7 +47,7 @@ class ClientsController extends Controller
 
         if ($client) {
             $title = "Detalhes do cliente {$client->name}";
-            $this->render('clients/show', compact('client', 'title', 'paginator' ,'declarations'));
+            $this->render('clients/show', compact('client', 'title', 'paginator', 'declarations'));
         } else {
             FlashMessage::danger('Cliente não encontrado!');
             $this->redirectTo(route('clients.index'));
