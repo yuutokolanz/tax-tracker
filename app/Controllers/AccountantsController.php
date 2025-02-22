@@ -29,7 +29,7 @@ class AccountantsController extends Controller
     {
         $image = $_FILES['accountant_image'];
 
-        if($this->currentUser()->avatar()->update($image)){
+        if ($this->currentUser()->avatar()->update($image)) {
             FlashMessage::success('Imagem de perfil atualizada com sucesso!');
             $this->redirectTo(route('accountants.profile'));
         } else {
