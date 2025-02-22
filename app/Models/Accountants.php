@@ -65,6 +65,5 @@ class Accountants extends Model
     public function avatar(): AccountantAvatar
     {
         return new AccountantAvatar($this);
-
     }
 }

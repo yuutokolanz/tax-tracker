@@ -8,7 +8,11 @@ parameters:
 
   excludePaths:
     - app/views/*
+    - tests/Acceptance/_output/*
+    - tests/Support/_generated/*
+    - tests/Support/Data/*
 
   ignoreErrors:
     - '#Unsafe usage of new static\(\)\.#'
+    - '#Access to an undefined property Core\\Database\\ActiveRecord\\Model::\$[a-zA-Z0-9_]+.#'
     - '#Call to an undefined method ReflectionType::getName\(\).#'

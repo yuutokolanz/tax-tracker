@@ -20,6 +20,9 @@ jobs:
       - name: Composer install
         run: ./run composer install
 
+      - name: Setup Uploads assets permissions
+        run: sudo chown -R www-data:www-data public/assets/uploads
+
       - name: PHPUnit Units test
         run: ./run test tests/Unit
 

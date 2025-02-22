@@ -29,16 +29,11 @@ class AccountantsController extends Controller
     {
         $image = $_FILES['accountant_image'];
 
-        if ($this->currentUser()->avatar()->validateImageFormat($image)){
-            if ($this->currentUser()->avatar()->validateImageSize($image)){
-                $this->currentUser()->avatar()->upload($image);
-                $this->redirectTo(route('accountants.profile'));
-            } else{
-                FlashMessage::danger('Imagem muito grande. Por favor, envie uma imagem com até 2MB.');
-                $this->redirectTo(route('accountants.profile'));
-            }
+        if($this->currentUser()->avatar()->update($image)){
+            FlashMessage::success('Imagem de perfil atualizada com sucesso!');
+            $this->redirectTo(route('accountants.profile'));
         } else {
-            FlashMessage::danger('Formato de imagem inválido. Por favor, envie uma imagem no formato PNG, JPG ou JPEG.');
+            FlashMessage::danger('Erro ao atualizar imagem de perfil! Formato ou tamanho inválido(s).');
             $this->redirectTo(route('accountants.profile'));
         }
     }
