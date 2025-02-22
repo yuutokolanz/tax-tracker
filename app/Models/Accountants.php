@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Services\AccountantAvatar;
 use Core\Database\ActiveRecord\Model;
 use Lib\Validations;
 
@@ -11,12 +12,13 @@ use Lib\Validations;
  * @property string $email
  * @property string $encrypted_password
  * @property int $role_id
+ * @property string $avatar_name
  */
 
 class Accountants extends Model
 {
     protected static string $table = 'accountants';
-    protected static array $columns = ['id', 'name', 'email', 'encrypted_password', 'role_id'];
+    protected static array $columns = ['id', 'name', 'email', 'encrypted_password', 'role_id', 'avatar_name'];
 
     protected ?string $password = null;
     protected ?string $password_confirmation = null;
@@ -58,5 +60,11 @@ class Accountants extends Model
         ) {
             $this->encrypted_password = password_hash($value, PASSWORD_DEFAULT);
         }
+    }
+
+    public function avatar(): AccountantAvatar
+    {
+        return new AccountantAvatar($this);
+
     }
 }

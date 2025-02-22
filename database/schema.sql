@@ -28,6 +28,7 @@ CREATE TABLE accountants (
     created_at DATE,
     supervisor_id INT,
     role_id INT,
+    avatar_name VARCHAR(65),
     FOREIGN KEY (supervisor_id) REFERENCES accountants (id),
     FOREIGN KEY (role_id) REFERENCES roles (id)
 );

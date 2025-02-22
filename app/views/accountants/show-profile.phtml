@@ -1,0 +1,28 @@
+<div class="d-flex justify-content-center align-items-center">
+    <div class="d-flex flex-column align-items-end">
+        <form action="<?= route('accountants.deleteProfile') ?>" method="POST" class="m-0">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-link delete text-danger" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Excluir imagem"><i class="bi bi-trash3"></i></button>
+        </form>
+
+        <img id="image_preview" class="avatar rounded img-thumbnail" src="<?= $this->current_user->avatar()->path() ?>" alt="avatar">
+
+        <form action="<?= route('accountants.updateProfile') ?>" method="POST" enctype="multipart/form-data">
+            <input id="image_preview_input" type="file" name="accountant_image" id="user_avatar">
+            <div class="d-grid mt-2">
+                <button id="image_preview_submit" type="submit" class="btn btn-fill btn-primary">Atualizar</button>
+            </div>
+        </form>
+    </div>
+    <div class="mx-5">
+        <div class="rounded">
+            <h3><?= $this->current_user->name ?></h3>
+            <span class="text-primary">Contador</span>
+        </div>
+        <ul class="list-unstyled mt-2">
+            <li>
+                <span>Email: <?= $this->current_user->email ?></span>
+            </li>
+        </ul>
+    </div>
+</div>

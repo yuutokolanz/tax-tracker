@@ -17,17 +17,21 @@
     <nav class="navbar">
         <div class="container-fluid d-flex flex-row justify-content-between mx-4">
             <a class="navbar-brand" href="<?= route('index') ?>">Tax Tracker</a>
-            <?php if ($this->current_user) : ?>
-                <div class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" aria-expanded="false">
-                        <?= $this->current_user->email ?>
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="<?= route('index') ?>">Perfil</a>                      
-                        <a class="dropdown-item" href="<?= route('accountants.logout') ?>">Sair</a>
+            
+            <div class="d-flex flex-row align-items-center gap-3">
+                <img id="img_preview" class="avatar-preview img-thumbnail" src="<?= $this->currentUser()->avatar()->path() ?>" alt="avatar" >
+                <?php if ($this->current_user) : ?>
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" aria-expanded="false">
+                            <?= $this->current_user->email ?>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="<?= route('accountants.profile') ?>">Perfil</a>                      
+                            <a class="dropdown-item" href="<?= route('accountants.logout') ?>">Sair</a>
+                        </div>
                     </div>
-                </div>
-            <?php endif; ?>
+                <?php endif; ?>
+            </div>
         </div>
     </nav>
     <main class="container-fluid">
