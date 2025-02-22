@@ -29,22 +29,28 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/declarations/show/{id}', [DeclarationsController::class, 'show'])->name('declarations.show');
 
-    // Clients Crud
-    Route::get('/clients', [ClientsController::class, 'index'])->name('clients.index');
+    // Clients
+    // Profile
+    Route::get('/profile', [AccountantsController::class, 'profile'])->name('accountants.profile');
+    Route::post('/profile', [AccountantsController::class, 'updateProfileImage'])->name('accountants.updateProfile');
+    Route::delete('/profile', [AccountantsController::class, 'deleteProfileImage'])->name('accountants.deleteProfile');
 
-        //Create
-    Route::get('/clients/new', [ClientsController::class, 'new'])->name('clients.new');
-    Route::post('/clients', [ClientsController::class, 'create'])->name('clients.create');
+        //CRUD
+        Route::get('/clients', [ClientsController::class, 'index'])->name('clients.index');
 
-        //Retrive
-    Route::get('/clients/{id}', [ClientsController::class, 'show'])->name('clients.show');
+            //Create
+        Route::get('/clients/new', [ClientsController::class, 'new'])->name('clients.new');
+        Route::post('/clients', [ClientsController::class, 'create'])->name('clients.create');
 
-        //Update
-    Route::get('/clients/{id}/edit', [ClientsController::class, 'edit'])->name('clients.edit');
-    Route::put('/clients/{id}', [ClientsController::class, 'update'])->name('clients.update');
+            //Retrive
+        Route::get('/clients/{id}', [ClientsController::class, 'show'])->name('clients.show');
 
-        //Delete
-    Route::delete('/clients/{id}', [ClientsController::class, 'destroy'])->name('clients.destroy');
+            //Update
+        Route::get('/clients/{id}/edit', [ClientsController::class, 'edit'])->name('clients.edit');
+        Route::put('/clients/{id}', [ClientsController::class, 'update'])->name('clients.update');
+
+            //Delete
+        Route::delete('/clients/{id}', [ClientsController::class, 'destroy'])->name('clients.destroy');
 
     // Supervisor Routes
     $supervisorMiddleware = new RouteWrapperMiddleware('role_supervisor', 2);

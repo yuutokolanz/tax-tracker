@@ -41,8 +41,8 @@ function php:console {
 }
 
 function test {
-   TEST_PATH="${@:-tests}"
-   docker compose run --rm php ./vendor/bin/phpunit --color ${TEST_PATH}
+    TEST_PATH="${@:-tests}"
+    docker compose run --rm php_test ./vendor/bin/phpunit --color ${TEST_PATH}
 }
 
 function phpcs {
